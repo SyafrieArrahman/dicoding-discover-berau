@@ -59,7 +59,7 @@ nav {
     left: 50%;
     transform: translate(-50%, -50%);
 
-    color: rgba(255, 255, 255, 0.8);
+    color: rgb(255, 255, 255);
     font-size: 5rem;
     transition: color 0.5s;
 }
@@ -85,6 +85,7 @@ main {
     box-sizing: border-box;
     background-color: #fff;
     margin-right: 1rem;
+    margin-top: 1rem;
 }
 
 #content h1 {
@@ -121,6 +122,14 @@ aside h1 {
 
 /* Layout Responsif */
 @media (max-width: 768px) {
+  nav {
+    width: 80%;
+  }
+  
+  .nav-menu {
+    display: block;
+  }
+  
   main {
     flex-direction: column;
   }
@@ -129,20 +138,11 @@ aside h1 {
     margin-right: 0;
   }
 
-  aside {
-    margin-top: 20px;
-  }
-}/* Layout Responsif */
-@media (max-width: 768px) {
-  main {
-    flex-direction: column;
-  }
-
-  #content {
+  #content article {
     margin-right: 0;
   }
 
   aside {
-    margin-top: 20px;
+    margin-top: 1rem;
   }
 }
