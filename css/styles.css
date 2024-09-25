@@ -1,3 +1,14 @@
+:root {
+    --baseblack : #0a0a0b;
+    --neutrals1000 : #151314;
+    --neutrals900 : #2b2829;
+    --basewhite : #fafafa;
+    --primary : #3498db;
+    --succes: #28a745;
+    --warning: #ffc107;
+    --error: #dc3545;
+  }
+
 * {
     margin: 0; 
     padding: 0;  
@@ -5,37 +16,19 @@
 
 body {
     font-family: "Poppins", sans-serif;
-    background-color: #f4f4f4;
+    background-color: var(--basewhite);
     box-sizing: border-box;
 }
 
-header {
-    background-image: url(../assets/derawan.jpg);
-    height: 100vh;
-    width: 100vw;
-    background-size: cover;
-    background-repeat: no-repeat;
-    padding: 1rem;
-}
-
 nav {
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 1rem;
-    text-align: center;
-    width: 50%;
-    border-radius: 50px;
-    position: absolute;
-    top: 5%;
-    left: 50%;
-    transform: translate(-50%, -5%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.nav-menu {
-    display: flex;
-    justify-content: center;
+.logo img {
+    height: 50px;
 }
 
 .nav-menu li {
@@ -43,78 +36,242 @@ nav {
 }
 
 .nav-menu a {
-    color: rgba(255, 255, 255, 0.8);
+    color: var(--baseblack);
     text-decoration: none;
     margin: 0 2rem;
     font-size: 1.2em;
 }
 
-.nav-menu a:hover {
-    color: #fff;
+/* Styling main container */
+main {
+    display: flex;
+    flex-direction: column; 
+    margin: 1rem;
+    padding: 4px;
+    background-color: var(--baseblack);
 }
 
-.title {
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px; 
+    width: 100%;
+    position: relative;
+}
+
+#hero section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+#hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    border-radius: 8px;
+    filter: brightness(50%);
+    z-index: 1; 
+}
+
+#hero h1 {
+    color: var(--basewhite); 
+    font-size: 4rem;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    color: rgba(255, 255, 255, 0.8);
-    font-size: 5rem;
-    transition: color 0.5s;
+    left: 5%;
+    transform: translateY(-50%);
+    z-index: 2; 
 }
 
-.title:hover {
-    color: #fff;
+.content-wrapper {
+    display: grid;
+    grid-template-columns: 70% 30%; 
+    grid-template-rows: auto;
+    width: 100%;
 }
 
-/* styling main content */
-main {
-    margin: 1rem;
-    display: flex;
+article {
+    background-color: var(--basewhite); 
+    padding: 1rem;  
+    grid-column: 1 / 2;
+    margin: 4px 4px 0 0;
+    border-radius: 8px;
 }
 
-#content {
-    flex: 2;
-    text-align: justify;
+article h1 {
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 2rem;
 }
 
-#content article {
-    border: 1px solid #000;
-    border-radius: 16px;
-    box-sizing: border-box;
-    background-color: #fff;
-    margin-right: 1rem;
-}
-
-#content h1 {
-    padding: 1em;
-    background-color: black;
-    border-radius: 16px 16px 0 0;
-    color: white;
-}
-
-#content p {
-    padding: 0.5em 1em;
-}
-
-#content li {
-    padding: 0.5em 1em;
-    margin: 1rem;
-}
-
-/* styling aside */
 aside {
-    flex: 1;
-    border: 1px solid #000;
-    border-radius: 16px;
-    box-sizing: border-box;
-    background-color: #fff;
+    background-color: var(--basewhite); 
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 4px;
+    grid-column: 2 / 3;
+    grid-row: 1;
+    align-self: start;
+    height: auto;
 }
 
 aside h1 {
-    padding: 1em;
-    background-color: black;
-    border-radius: 16px 16px 0 0;
-    color: white;
+    text-align: center;
+    font-weight: 400;
+}
+
+/* Styling untuk card berita */
+.news-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+}
+
+.gallery-container {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.news-card {
+    background-color: var(--basewhite);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px; 
+    transition: transform 0.3s ease; 
+}
+
+.gallery-card {
+    background-color: var(--basewhite);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    height: 200px; 
+    margin-bottom: 2rem;
+    transition: transform 0.3s ease;
+}
+
+.news-card img, .gallery-card img {
+    width: 100%;
+    height: 200px; 
+    object-fit: cover; 
+}
+
+.news-card:hover, .gallery-card:hover {
+    transform: translateY(-10px); 
+}
+
+.news-caption {
+    padding: 1rem;
+    text-align: center;
+}
+
+.news-caption h2 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: var(--baseblack); 
+}
+
+.news-caption p {
+    font-size: 1rem;
+    color: var(--neutrals900); 
+}
+
+/* Styling Maps */
+.map-container {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+}
+
+iframe {
+    border: none;
+    border-radius: 8px;
+    width: 100%;
+    height: 450px;
+}
+
+/* Styling untuk section Agenda Kegiatan */
+.agenda-kegiatan {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.agenda-item {
+    width: 450px;
+    padding: 1rem;
+    background-color: #ffffff; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+.agenda-details h3 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.agenda-details p {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 0.2rem;
+}
+
+
+/* Styling footer */
+footer {
+    background-color: #151314; /* Warna background hitam pekat */
+    color: #fafafa; /* Teks putih */
+    padding: 2rem 1rem;
+    font-size: 0.9rem;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h2 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: #f4d03f; 
+}
+
+.footer-section p {
+    margin-bottom: 0.5rem;
+}
+
+.footer-logo {
+    height: 50px;
+    margin-bottom: 1rem;
+}
+
+/* Footer Bottom */
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #2b2829;
+    font-size: 0.8rem;
+    color: #d3d3d3;
+}
+
+.footer-bottom p {
+    margin: 0;
 }
