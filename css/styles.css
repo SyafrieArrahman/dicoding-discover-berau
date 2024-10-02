@@ -1,24 +1,50 @@
 :root {
-    --baseblack : #0a0a0b;
-    --neutrals1000 : #151314;
-    --neutrals900 : #2b2829;
-    --basewhite : #fafafa;
-    --primary : #3498db;
+    --baseblack: #0a0a0b;
+    --neutrals1000: #151314;
+    --neutrals900: #2b2829;
+    --basewhite: #fafafa;
+    --primary: #f4d03f;
     --succes: #28a745;
     --warning: #ffc107;
     --error: #dc3545;
-  }
+}
 
 * {
-    margin: 0; 
-    padding: 0;  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
     font-family: "Poppins", sans-serif;
     background-color: var(--baseblack);
     color: var(--basewhite);
-    box-sizing: border-box;
+}
+
+#scrollUpBtn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--primary);
+    color: var(--baseblack);
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+#scrollUpBtn.visible {
+    opacity: 1;
+}
+
+#scrollUpBtn svg {  
+    fill: currentColor;
 }
 
 nav {
@@ -28,8 +54,31 @@ nav {
     align-items: center;
 }
 
-.logo img {
+.logo {
+    position: relative;
+    display: inline-block;
     height: 50px;
+    width: auto;
+}
+
+.logo img {
+    height: 100%;
+    width: auto;
+}
+
+.hamburger {
+    display: none;
+    cursor: pointer;
+}
+
+.bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    margin: 5px auto;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background-color: var(--basewhite);
 }
 
 .nav-menu li {
@@ -41,12 +90,32 @@ nav {
     text-decoration: none;
     margin: 0 2rem;
     font-size: 1.2em;
+    position: relative;
+    padding-bottom: 4px;
+}
+
+.nav-menu a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+    background-color: var(--primary);
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.3s ease-in-out;
+}
+
+.nav-menu a:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
 }
 
 /* Styling main container */
 main {
     display: flex;
-    flex-direction: column; 
+    flex-direction: column;
     margin: 1rem;
     padding: 4px;
 }
@@ -55,7 +124,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 400px; 
+    height: 400px;
     width: 100%;
     position: relative;
 }
@@ -69,32 +138,32 @@ main {
 #hero img {
     width: 100%;
     height: 100%;
-    object-fit: cover; 
+    object-fit: cover;
     border-radius: 24px;
     filter: brightness(50%);
-    z-index: 1; 
+    z-index: 1;
 }
 
 #hero h1 {
-    color: var(--basewhite); 
+    color: var(--basewhite);
     font-size: 4rem;
     position: absolute;
     top: 50%;
-    left: 5%;
+    left: 25%;
     transform: translateY(-50%);
-    z-index: 2; 
+    z-index: 2;
 }
 
 .content-wrapper {
     display: grid;
-    grid-template-columns: 70% 30%; 
+    grid-template-columns: 70% 30%;
     grid-template-rows: auto;
     width: 100%;
 }
 
 article {
-    background-color: var(--neutrals1000); 
-    padding: 1rem;  
+    background-color: var(--neutrals1000);
+    padding: 1rem;
     grid-column: 1 / 2;
     margin: 1rem 1rem 0 0;
     border-radius: 24px;
@@ -103,11 +172,11 @@ article {
 article h1 {
     text-align: center;
     font-weight: 400;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 aside {
-    background-color: var(--neutrals1000); 
+    background-color: var(--neutrals1000);
     border-radius: 24px;
     padding: 1rem;
     margin-top: 1rem;
@@ -120,6 +189,46 @@ aside {
 aside h1 {
     text-align: center;
     font-weight: 400;
+    margin-bottom: 1rem;
+}
+
+aside h2 {
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+}
+
+.aside-photo {
+    margin-bottom: 1rem;
+}
+
+.aside-photo img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 0.5rem;
+}
+
+.aside-photo p {
+    font-style: italic;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.quick-info, .quick-links, .weather-info, .event-highlight {
+    margin-bottom: 1rem;
+}
+
+.quick-info ul, .quick-links ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.quick-links a {
+    color: var(--basewhite);
+    text-decoration: none;
+}
+
+.quick-links a:hover {
+    color: var(--primary);
 }
 
 /* Styling untuk card berita */
@@ -127,7 +236,7 @@ aside h1 {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
 }
 
 .gallery-container {
@@ -136,34 +245,31 @@ aside h1 {
     flex-wrap: wrap;
 }
 
-.news-card {
+.news-card,
+.gallery-card {
     background-color: var(--neutrals900);
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px; 
-    transition: transform 0.3s ease; 
+    width: 300px;
+    transition: transform 0.3s ease;
 }
 
 .gallery-card {
     background-color: var(--basewhite);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    height: 200px; 
-    margin-bottom: 2rem;
-    transition: transform 0.3s ease;
+    height: 200px;
+    margin-bottom: 1rem;
 }
 
-.news-card img, .gallery-card img {
+.news-card img,
+.gallery-card img {
     width: 100%;
-    height: 200px; 
-    object-fit: cover; 
+    height: 200px;
+    object-fit: cover;
 }
 
-.news-card:hover, .gallery-card:hover {
-    transform: translateY(-10px); 
+.news-card:hover {
+    transform: translateY(-10px);
 }
 
 .news-caption {
@@ -174,12 +280,12 @@ aside h1 {
 .news-caption h2 {
     font-size: 1.5rem;
     margin-bottom: 0.5rem;
-    color: var(--basewhite); 
+    color: var(--basewhite);
 }
 
 .news-caption p {
     font-size: 1rem;
-    color: var(--basewhite); 
+    color: var(--basewhite);
 }
 
 /* Styling Maps */
@@ -206,8 +312,8 @@ iframe {
 .agenda-item {
     width: 450px;
     padding: 1rem;
-    background-color: var(--neutrals900); 
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    background-color: var(--neutrals900);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
     margin-bottom: 1rem;
 }
@@ -223,11 +329,10 @@ iframe {
     margin-bottom: 0.2rem;
 }
 
-
 /* Styling footer */
 footer {
-    background-color: #151314; /* Warna background hitam pekat */
-    color: #fafafa; /* Teks putih */
+    background-color: var(--neutrals1000);
+    color: var(--basewhite);
     padding: 2rem 1rem;
     font-size: 0.9rem;
 }
@@ -249,7 +354,7 @@ footer {
 .footer-section h2 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
-    color: #f4d03f; 
+    color: var(--primary);
 }
 
 .footer-section p {
@@ -266,11 +371,136 @@ footer {
     text-align: center;
     margin-top: 2rem;
     padding-top: 1rem;
-    border-top: 1px solid #2b2829;
+    border-top: 1px solid var(--neutrals900);
     font-size: 0.8rem;
-    color: #d3d3d3;
+    color: var(--basewhite);
 }
 
 .footer-bottom p {
     margin: 0;
+}
+
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    .nav-menu {
+        position: fixed;
+        left: -100%;
+        top: 80px;
+        gap: 0;
+        flex-direction: column;
+        background-color: var(--neutrals1000);
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        z-index: 1000;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-menu li {
+        margin: 16px 0;
+    }
+    
+
+    #hero h1 {
+        font-size: 2.5rem;
+        left: 25%;
+    }
+
+    .content-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    article,
+    aside {
+        grid-column: span 1;
+        margin: 1rem 0;
+    }
+
+    .news-card,
+    .gallery-card {
+        width: 100%;
+    }
+
+    .agenda-item {
+        width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        font-size: 0.9rem;
+    }
+
+    nav {
+        padding: 0.5rem;
+    }
+
+    .nav-menu a {
+        font-size: 1rem;
+        margin: 0.5rem 0;
+    }
+
+    .logo {
+        height: 40px;
+    }
+
+    #hero {
+        height: 250px;
+    }
+
+    #hero h1 {
+        font-size: 2rem;
+        left: 25%;;
+    }
+
+    .content-wrapper {
+        grid-template-columns: 1fr;
+        margin: 0.5rem;
+    }
+
+    .news-card,
+    .gallery-card {
+        width: 100%;
+        height: auto;
+    }
+
+    .map-container iframe {
+        height: 300px;
+    }
+
+    .agenda-item {
+        width: 100%;
+    }
+
+    footer {
+        font-size: 0.8rem;
+        padding: 1rem;
+    }
+
+    .footer-container {
+        flex-direction: column;
+    }
+
+    .footer-section {
+        margin-bottom: 1rem;
+    }
 }
